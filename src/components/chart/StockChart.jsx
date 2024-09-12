@@ -49,7 +49,7 @@ export const StockChart = (props) => {
 
   const fetchStockData = async () => {
     try {
-      const res = await client.get('http://3.36.171.50:8000/'+props.stockId);
+      const res = await client.get('https://booth.hasclassmatching.com/'+props.stockId);
       const values = res.data;
 
       // 캔들스틱 데이터 생성 (시가, 고가, 저가, 종가 순서로 배열에 넣음)

@@ -25,7 +25,7 @@ const Button = styled.button`
 export const ActionButtons = (props) => {
   const client = axios.create()
   const onBuy = () => {
-    client.post('http://3.36.171.50:8000/buy_stock'+(props.index + 1).toString(),
+    client.post('https://booth.hasclassmatching.com/buy_stock'+(props.index + 1).toString(),
       {
         "std_id": props.userData.std_id,
         "token": props.userData.token,
@@ -36,7 +36,7 @@ export const ActionButtons = (props) => {
       const text = res.data
       if (typeof text === 'object') {
         alert("성공적으로 매수하였습니다.")
-        client.post('http://3.36.171.50:8000/update_capital',{
+        client.post('https://booth.hasclassmatching.com/update_capital',{
           "std_id" : props.userData.std_id,
         })
         .then((res) => {
@@ -53,7 +53,7 @@ export const ActionButtons = (props) => {
     })
   }
   const onSell = () => {
-    client.post('http://3.36.171.50:8000/sell_stock'+(props.index + 1).toString(),
+    client.post('https://booth.hasclassmatching.com/sell_stock'+(props.index + 1).toString(),
       {
         "std_id": props.userData.std_id,
         "token": props.userData.token,
@@ -65,7 +65,7 @@ export const ActionButtons = (props) => {
       if (typeof text === 'object') alert("성공적으로 매도하였습니다.")
       else alert(text)
 
-      client.post('http://3.36.171.50:8000/update_capital',{
+      client.post('https://booth.hasclassmatching.com/update_capital',{
         "std_id" : props.userData.std_id,
       })
       .then((res) => {

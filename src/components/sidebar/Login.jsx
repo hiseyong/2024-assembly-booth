@@ -50,7 +50,7 @@ export const Login = (props) => {
     };
     
     const onClick = () => {
-        client.post('http://3.36.171.50:8000/login',
+        client.post('https://booth.hasclassmatching.com/login',
             {
                 "std_id": id,
                 "password": password
