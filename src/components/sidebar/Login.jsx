@@ -58,8 +58,11 @@ export const Login = (props) => {
         )
         .then((res) => {
             console.log(res)
-            props.setUserData(res.data[0])
-            props.setUserCapital(res.data[1])
+            if (res.data === '"비밀번호가 틀립니다. 다시 시도해주세요."') alert('비밀번호가 틀립니다. 다시 시도해주세요.')
+            else {
+                props.setUserData(res.data[0])
+                props.setUserCapital(res.data[1])
+            }
         })
     }
 
