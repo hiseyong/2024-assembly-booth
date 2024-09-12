@@ -73,7 +73,7 @@ export const StockChart = (props) => {
   };
 
   useEffect(() => {
-    setInterval(fetchStockData, 1000); // 1초마다 초기 데이터 요청
+    setInterval(fetchStockData, 3000); // 1초마다 초기 데이터 요청
   }, []);
 
   return (
