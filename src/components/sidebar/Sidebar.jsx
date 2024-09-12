@@ -18,7 +18,9 @@ const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto; /* 자식이 많으면 y축 스크롤 가능하게 함 */
 `;
+
 
 const WelcomeMessage = styled.div`
   font-size: 18px;
