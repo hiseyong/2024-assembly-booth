@@ -29,7 +29,7 @@ export const ActionButtons = (props) => {
       {
         "std_id": props.userData.std_id,
         "token": props.userData.token,
-        "code": props.index + 1,
+        "code": props.index,
         "stock_num": props.quantity,
         "mode": 0
       }
@@ -59,7 +59,7 @@ export const ActionButtons = (props) => {
       {
         "std_id": props.userData.std_id,
         "token": props.userData.token,
-        "code": props.index + 1,
+        "code": props.index,
         "stock_num": props.quantity,
         "mode": 1
       }
