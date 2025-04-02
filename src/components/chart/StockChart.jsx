@@ -3,7 +3,6 @@ import ApexCharts from "react-apexcharts";
 import axios from "axios";
 
 export const StockChart = (props) => {
-  const client = axios.create();
   const [chartData, setChartData] = useState({
     series: [{
       name: "Stock Price",
@@ -47,37 +46,13 @@ export const StockChart = (props) => {
     }
   });
 
-  const fetchStockData = async () => {
-    try {
-      const res = await client.get('https://booth.hasclassmatching.com/get_all_stock_price');
-      const values = res.data[props.stockId]; // 주식 데이터
-
-      // 캔들스틱 데이터 생성 (시가, 고가, 저가, 종가 순서로 배열에 넣음)
-      const closingPrices = values.map((data, idx) => ({
-        x: (idx+1).toString(), // 날짜를 가정, 실제 데이터 사용 시 변경
-        y: [data.open, data.high, data.low, data.close] // 시가, 고가, 저가, 종가 배열
-      }));
-
-      
-      if (props !== undefined && closingPrices.length > 0) {
-        props.setPrice(closingPrices[closingPrices.length - 1].y[3]);
-      }
-
-      props.setQuantity(closingPrices.length);
-
-      setChartData(prevChartData => ({
-        ...prevChartData,
-        series: [{ name: "Stock Price", data: closingPrices }]
-      }));
-    } catch (error) {
-      console.error('Error fetching stock data:', error);
-    }
-  };
 
   useEffect(() => {
-    fetchStockData();
-    setInterval(fetchStockData, 5000); // 1초마다 초기 데이터 요청
-  }, []);
+    setChartData(prevChartData => ({
+      ...prevChartData,
+      series: [{ name: "Stock Price", data: props.stockData }]
+    }));
+  }, [props]);
 
   return (
     <div>
