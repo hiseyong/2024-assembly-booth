@@ -49,8 +49,8 @@ export const StockChart = (props) => {
 
   const fetchStockData = async () => {
     try {
-      const res = await client.get('https://booth.hasclassmatching.com/'+props.stockId);
-      const values = res.data;
+      const res = await client.get('https://booth.hasclassmatching.com/get_all_stock_price');
+      const values = res.data[props.stockId]; // 주식 데이터
 
       // 캔들스틱 데이터 생성 (시가, 고가, 저가, 종가 순서로 배열에 넣음)
       const closingPrices = values.map((data, idx) => ({
@@ -63,6 +63,8 @@ export const StockChart = (props) => {
         props.setPrice(closingPrices[closingPrices.length - 1].y[3]);
       }
 
+      props.setQuantity(closingPrices.length);
+
       setChartData(prevChartData => ({
         ...prevChartData,
         series: [{ name: "Stock Price", data: closingPrices }]
@@ -73,7 +75,7 @@ export const StockChart = (props) => {
   };
 
   useEffect(() => {
-    setInterval(fetchStockData, 3000); // 1초마다 초기 데이터 요청
+    setInterval(fetchStockData, 5000); // 1초마다 초기 데이터 요청
   }, []);
 
   return (

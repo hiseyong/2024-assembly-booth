@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 
 const ContentContainer = styled.div`
-  margin-left: 300px;
+  margin-left: 340px;
   margin-top: 0px;
   margin-right: 0px;
   margin-bottom: 0px;
@@ -21,6 +21,7 @@ export const StockCharts = (props) => {
   const [price2, setPrice2] = useState(0);
   const [price3, setPrice3] = useState(0);
   const [price4, setPrice4] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   useEffect(()=>{
     props.setPrices({
@@ -42,10 +43,10 @@ export const StockCharts = (props) => {
 
   return (
       <ContentContainer>
-        <StockChart width={chartWidth / 2.3} name='삼성양성자' stockId='stock1' setPrice={setPrice1}/>
-        <StockChart width={chartWidth / 2.3} name='에스게이 하이닉스' stockId='stock2' setPrice={setPrice2}/>
-        <StockChart width={chartWidth / 2.3} name='GL 전자' stockId='stock3' setPrice={setPrice3}/>
-        <StockChart width={chartWidth / 2.3} name='오이마켓' stockId='stock4' setPrice={setPrice4}/>
+        <StockChart width={chartWidth / 2.3} name='삼성양성자' stockId='0' setPrice={setPrice1} setQuantity={setQuantity}/>
+        <StockChart width={chartWidth / 2.3} name='에스게이 하이닉스' stockId='1' setPrice={setPrice2} setQuantity={setQuantity}/>
+        <StockChart width={chartWidth / 2.3} name='GL 전자' stockId='2' setPrice={setPrice3} setQuantity={setQuantity}/>
+        <StockChart width={chartWidth / 2.3} name='오이마켓' stockId='3' setPrice={setPrice4} setQuantity={setQuantity}/>
       </ContentContainer>
   );
 };

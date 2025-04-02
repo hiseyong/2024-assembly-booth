@@ -25,11 +25,13 @@ const Button = styled.button`
 export const ActionButtons = (props) => {
   const client = axios.create()
   const onBuy = () => {
-    client.post('https://booth.hasclassmatching.com/buy_stock'+(props.index + 1).toString(),
+    client.post('https://booth.hasclassmatching.com/stock_trade',
       {
         "std_id": props.userData.std_id,
         "token": props.userData.token,
-        ["stock"+(props.index + 1).toString()]: props.quantity
+        "code": props.index + 1,
+        "stock_num": props.quantity,
+        "mode": 0
       }
     )
     .then((res) => {
@@ -53,11 +55,13 @@ export const ActionButtons = (props) => {
     })
   }
   const onSell = () => {
-    client.post('https://booth.hasclassmatching.com/sell_stock'+(props.index + 1).toString(),
+    client.post('https://booth.hasclassmatching.com/stock_trade',
       {
         "std_id": props.userData.std_id,
         "token": props.userData.token,
-        ["stock"+(props.index + 1).toString()]: props.quantity
+        "code": props.index + 1,
+        "stock_num": props.quantity,
+        "mode": 1
       }
     )
     .then((res) => {

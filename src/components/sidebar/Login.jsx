@@ -58,7 +58,7 @@ export const Login = (props) => {
         )
         .then((res) => {
             console.log(res)
-            if (res.data === '"비밀번호가 틀립니다. 다시 시도해주세요."') alert('비밀번호가 틀립니다. 다시 시도해주세요.')
+            if (res.data === "계정 정보가 존재하지 않습니다. 회원가입 후 이용해주세요. err : 'NoneType' object has no attribute 'password'") alert('계정정보가 틀립니다. 다시 시도해주세요.')
             else {
                 props.setUserData(res.data[0])
                 props.setUserCapital(res.data[1])
